@@ -1,1 +1,78 @@
 /* You can add global styles to this file, and also import other style files */
+$textColor: #9c27b0;
+$textColorDanger:#af0909;
+
+html, body {
+  height: 100%;
+  color: black!important;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  color: black!important;
+
+}
+
+.p-10px {
+  padding: 10px;
+}
+
+.table-content-list {
+  width: 100%;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.btn-deleted {
+  color: $textColorDanger;
+}
+
+.btn-edit {
+  color: $textColor;
+}
+
+.btnNewRegister {
+  float: right;
+  margin: 14px!important;
+  background-color: #9c27b0!important;
+  background: #9c27b0!important;
+  color: #fff;
+}
+
+.card-footer {
+  justify-content: center!important;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+#mobilProfie {
+display: none;
+}
+
+@media (max-width: 991px) {
+  .sidebar-wrapper ul li p {
+    color: #fff!important;
+  }
+  .nav-mobil{
+    justify-content: center!important;
+    display: grid!important;
+  }
+  .nav-mobil li p {
+    font-size: 17px!important;
+  }
+  #mobilProfie {
+    display: initial;
+  }
+  #mobilProfie li a{
+    cursor: pointer;
+  }
+}
+@media (max-width:573px) {
+  .mat-paginator-range-label{
+    display: none;
+  }
+}

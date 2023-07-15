@@ -1,0 +1,23 @@
+<div class="card card-chart">
+  <div class="card-header card-header-success">
+    <div class="ct-chart" id="dailySalesChart"></div>
+  </div>
+  <div class="card-body">
+    <h4 class="card-title">Listado de Usuarios </h4>
+    <p class="card-category">
+      <span class="text-success">
+        <div class="text-center" *ngIf="loading">
+          <mat-spinner class="m-auto"></mat-spinner>
+        </div>
+      </span>
+    </p>
+    <div class="row">
+      <div class="col" *ngIf="dataSource.data.length!=0 && !loading">
+        <app-user-table
+         [dataSource]="dataSource" 
+         (userEvent)="deletedUser($event)">
+        </app-user-table>
+      </div>
+    </div>
+  </div>
+</div>

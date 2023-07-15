@@ -1,0 +1,110 @@
+<div class="card card-chart">
+  <div class="card-header card-header-success">
+    <div class="ct-chart" id="dailySalesChart"></div>
+  </div>
+  <div class="card-body">
+    <h4 class="card-title"> {{ userId == true ? 'Actualizar Usuario':'Nuevo Usuario' }} </h4>
+    <p class="card-category">
+      <span class="text-success">
+        <div class="text-center" *ngIf="loading">
+          <mat-spinner class="m-auto"></mat-spinner>
+        </div>
+      </span>
+    </p>
+    <div class="container row mat-elevation-z8 m-5 p-5 m-auto" *ngIf="!loading">
+      <div class="col">
+        <form *ngIf="userForm"
+              autocomplete="off"
+              [formGroup]="userForm"
+              (ngSubmit)="saveDataUser(userId == true ? 1:2)">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Nombre y Apellido</mat-label>
+                  <input type="text" matInput formControlName="name">
+                  <mat-error *ngIf="dataControls['name'].hasError('required')">
+                    Completa este <strong>campo</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Email</mat-label>
+                  <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
+                  <mat-error *ngIf="dataControls['email'].hasError('required')">
+                    Completa este <strong>campo</strong>
+                  </mat-error>
+                  <mat-error *ngIf="dataControls['email'].hasError('email')">
+                   Ingresa una dirección de correo válida
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Usuario</mat-label>
+                  <input type="text" matInput formControlName="username">
+                  <mat-error *ngIf="dataControls['username'].hasError('required')">
+                    Completa este <strong>campo</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="col-md-6" *ngIf="!userId">
+              <div class="form-group">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Contraseña</mat-label>
+                  <input type="password" matInput formControlName="password">
+                  <mat-error *ngIf="dataControls['password'].hasError('required')">
+                    Completa este <strong>campo</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <mat-form-field>
+                  <mat-label>Rol</mat-label>
+                  <mat-select formControlName="role">
+                    <mat-option value="">Seleccione una opción</mat-option>
+                    <mat-option value="USER_ROLE">Usuario</mat-option>
+                    <mat-option value="ADMIN_ROLE">Administrador</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="dataControls['role'].hasError('required')">
+                    Completa este <strong>campo</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <mat-form-field>
+                  <mat-label>Estado</mat-label>
+                  <mat-select formControlName="status">
+                    <mat-option value="">Seleccione una opción</mat-option>
+                    <mat-option [value]=true>Activo</mat-option>
+                    <mat-option [value]=false>Inactivo</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="dataControls['status'].hasError('required')">
+                    Completa este <strong>campo</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <mat-progress-bar mode="indeterminate" *ngIf="messageSend"></mat-progress-bar>
+          <button type="submit" class="btn btn-primary pull-left">{{ userId == true ? 'Actualizar Usuario':'Agregar Usuario' }}</button>
+          <div class="clearfix"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

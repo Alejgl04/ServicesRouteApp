@@ -1,0 +1,57 @@
+<div class="container-login" style="background-image: url('../../../../assets/img/bg-01.jpg');">
+    <div class="main-panel">
+      <div class="content">
+        <div class="container">
+          <div class="row content-center">
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title">Recuperar Contraseña</h4>
+                  <p class="card-category">Ingresa Email</p>
+                </div>
+                <div class="card-body">
+                  <form [formGroup]="recoveryForm"
+                        (ngSubmit)="submitEmail()"
+                        autocomplete="off">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Correo Electr&oacute;nico</label>
+                          <input type="text" class="form-control" name="email" formControlName="email">
+                        </div>
+                        <span *ngIf="fieldNotValid('email')" class="text-danger">
+                          Completa este campo <br>
+                          Ingresa un correo electr&oacute;nico v&aacute;lido
+                        </span>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <div class="form-group">
+                            <label class="">¿Aún sin cuenta?<a routerLink="/auth/register"> Registrarse</a> </label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <div class="form-group">
+                            <label class=""> <a routerLink="/auth/login">Iniciar Sesi&oacute;n</a></label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <mat-progress-bar mode="indeterminate" *ngIf="loader"></mat-progress-bar>
+                    <button type="submit" class="btn btn-primary pull-left"  [disabled]="clicked" clicked = true;>Recuperar</button>
+                    <div class="clearfix"></div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="footer">
+      </footer>
+    </div>
+  </div>

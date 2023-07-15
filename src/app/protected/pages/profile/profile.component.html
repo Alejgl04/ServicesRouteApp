@@ -1,0 +1,81 @@
+<div class="row">
+  <div class="card card-chart">
+    <div class="card-header card-header-success">
+      <div class="ct-chart" id="dailySalesChart"></div>
+    </div>
+    <div class="card-body">
+      <h4 class="card-title"> Información de Perfil</h4>
+      <p class="card-category">
+        <span class="text-success">
+          <div class="text-center" *ngIf="loading">
+            <mat-spinner class="m-auto"></mat-spinner>
+          </div>
+        </span>
+      </p>
+      <div class="container row mat-elevation-z8 m-5 p-5 m-auto" *ngIf="!loading">
+        <!-- Form user profile -->
+        <div class="col-md-6 mb-3">
+          Actualice la información de perfil y la dirección de correo electrónico de su cuenta.
+          <form *ngIf="profileForm" autocomplete="off" [formGroup]="profileForm"
+          (ngSubmit)="saveProfileData()">
+          <div class="row">
+            <div class="col-md-6 ">
+              <div class="form-group">
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Nombre</mat-label>
+                  <input type="text" matInput formControlName="name">
+                  <mat-error *ngIf="dataControls['name'].hasError('required')">
+                    Completa este <strong>campo</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Correo Electrónico</mat-label>
+                  <input type="email" matInput formControlName="email">
+                  <mat-error *ngIf="dataControls['email'].hasError('required')">
+                    Completa este <strong>campo</strong>
+                  </mat-error>
+                  <mat-error *ngIf="dataControls['email'].hasError('email')">
+                    Ingresa una dirección de correo válida
+                   </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <mat-progress-bar mode="indeterminate" *ngIf="messageSend"></mat-progress-bar>
+          <button type="submit" class="btn btn-primary pull-right">Guardar</button>
+          <div class="clearfix"></div>
+          </form>
+          <hr>
+          <form autocomplete="off">
+            <div class="row mt-2">
+              <div class="col-md-6 m-auto">
+                <p class="mt-2">
+                  Eliminar permanente tu cuenta
+                </p>
+              </div>
+              <div class="col-md-6">
+                <button type="button" (click)="deleteAccount()" class="btn btn-primary pull-right">Eliminar Cuenta</button>
+              </div>
+              <mat-progress-bar mode="indeterminate" *ngIf="progressRemove"></mat-progress-bar>
+            </div>
+          </form>
+        </div>
+        <!-- Picture Profile -->
+        <div class="col-md-6 text-center">
+          <img [src]="userImage | imageUser" [alt]="userImage?.name" class="avatar" *ngIf="!pictureBoolean;else newImage">
+          <ng-template #newImage>
+            <img [src]="pictureProfile" [alt]="userImage?.name" class="avatar" [ngStyle]="loadingImage ? {'opacity': '0.3'} : {'opacity': 'initial'}">
+          </ng-template>
+
+          <mat-progress-bar mode="indeterminate" *ngIf="loadingImage"></mat-progress-bar>
+          <hr>
+          <input type="file" name="file" (change)="onselectFile($event)">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

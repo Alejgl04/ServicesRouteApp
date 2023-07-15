@@ -1,0 +1,84 @@
+<div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
+
+  <div class="logo text-center" style="font-size: 20px;">
+      Servicios AG
+  </div>
+  <div class="sidebar-wrapper">
+    <ul class="nav">
+      <span *ngIf="user.role == 'ADMIN_ROLE'">
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:false}">
+          <a class="nav-link" routerLink='/users'>
+            <i class="material-icons">person</i>
+            <p>Usuario</p>
+          </a>
+        </li>
+      </span>
+      <li *ngFor="let item of menu" 
+          class="nav-item"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact:false}">
+        <a [routerLink]="[ item.route ]" 
+          class="nav-link">
+          <i class="material-icons">{{item.icon}}</i>
+          <p>{{ item.text }}</p>
+        </a>
+      </li>
+      <span id="mobilProfie">
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:false}">
+          <a class="nav-link" (click)="profile();">
+            <i class="material-icons">person</i>
+            <p>Profile</p>
+          </a>
+        </li>
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:false}">
+          <a class="nav-link" (click)="logOut();">
+            <i class="material-icons">exit_to_app</i>
+            <p>Cerrar sesión</p>
+          </a>
+        </li>
+      </span>
+      <!-- <li class="nav-item ">
+        <a class="nav-link" href="./tables.html">
+          <i class="material-icons">content_paste</i>
+          <p>Table List</p>
+        </a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="./typography.html">
+          <i class="material-icons">library_books</i>
+          <p>Typography</p>
+        </a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="./icons.html">
+          <i class="material-icons">bubble_chart</i>
+          <p>Icons</p>
+        </a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="./map.html">
+          <i class="material-icons">location_ons</i>
+          <p>Maps</p>
+        </a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="./notifications.html">
+          <i class="material-icons">notifications</i>
+          <p>Notifications</p>
+        </a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="./rtl.html">
+          <i class="material-icons">language</i>
+          <p>RTL Support</p>
+        </a>
+      </li>
+      <li class="nav-item active-pro ">
+        <a class="nav-link" href="./upgrade.html">
+          <i class="material-icons">unarchive</i>
+          <p>Upgrade to PRO</p>
+        </a>
+      </li> -->
+    </ul>
+  </div>
+</div>

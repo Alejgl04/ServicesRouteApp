@@ -1,0 +1,79 @@
+<div class="container-login" style="background-image: url('../../../../assets/img/bg-01.jpg');">
+  <div class="main-panel">
+    <div class="content">
+      <div class="container">
+        <div class="row content-center">
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header card-header-primary">
+                <h4 class="card-title">Registrate en la plataforma</h4>
+                <p class="card-category">Completa los campos</p>
+              </div>
+              <div class="card-body">
+                <form [formGroup]="registerForm"
+                      autocomplete="off"
+                      (ngSubmit)="sendRegister();">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="bmd-label-floating">Nombre y Apellido</label>
+                        <input type="text" class="form-control" formControlName="name">
+                      </div>
+                      <span *ngIf="fieldNotValid('name')" class="text-danger">
+                        Completa este campo
+                      </span>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="bmd-label-floating">Correo Electrónico</label>
+                        <input type="email" class="form-control" formControlName="email">
+                        <span *ngIf="fieldNotValid('email')" class="text-danger">
+                          Completa este campo <br> Debe ser un formato de correo válido 
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="bmd-label-floating">Usuario</label>
+                        <input type="text" class="form-control" formControlName="username">
+                      </div>
+                      <span *ngIf="fieldNotValid('username')" class="text-danger">
+                        Completa este campo
+                      </span>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="bmd-label-floating">Contraseña</label>
+                        <input type="password" autocomplete="off" class="form-control" formControlName="password">
+                      </div>
+                      <span *ngIf="fieldNotValid('password')" class="text-danger">
+                        Completa este campo <br> Contraseña debe tener un mínimo de 6 caracteres
+                      </span>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <div class="form-group">
+                          <label class=""> ¿Ya tienes cuenta? <a routerLink="/auth/login">Accede</a> </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <mat-progress-bar mode="indeterminate" *ngIf="loader"></mat-progress-bar>
+                  <button type="submit" class="btn btn-primary pull-left" [disabled]="clicked" clicked = true;>Registrarse</button>
+                  <div class="clearfix"></div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+    </footer>
+  </div>
+</div>

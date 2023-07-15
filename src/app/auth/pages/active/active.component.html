@@ -1,0 +1,40 @@
+<div class="container-login" style="background-image: url('../../../../assets/img/bg-01.jpg');">
+  <div class="main-panel">
+    <div class="content">
+      <div class="container">
+        <div class="row content-center">
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header card-header-primary">
+                <h4 class="card-title">Información de usuario</h4>
+                <p class="card-category"></p>
+              </div>
+              <div class="card-body">
+                <mat-progress-bar mode="indeterminate" *ngIf="loader"></mat-progress-bar>
+                <div class="text-center" *ngIf="!messageError">
+                  <h2> 
+                    <span class="material-icons" style="color: green;">
+                    check_circle
+                    </span> 
+                    El usuario {{ username }} ha sido activado exitosamente
+                  </h2>
+                </div>
+                <div class="text-center" *ngIf="messageError">
+                  <h2> 
+                    <span class="material-icons" style="color:red;">
+                      cancel
+                      </span>
+                    Ocurrio un error, {{message}}
+                  </h2>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+    </footer>
+  </div>
+</div>

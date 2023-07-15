@@ -1,0 +1,47 @@
+<div class="card card-chart">
+  <div class="card-header card-header-success">
+    <div class="ct-chart" id="dailySalesChart"></div>
+  </div>
+  <div class="card-body">
+    <h4 class="card-title"> Nuevo Tipo de cliente</h4>
+    <p class="card-category">
+      <span class="text-success">
+        <div class="text-center" *ngIf="loading">
+          <mat-spinner class="m-auto"></mat-spinner>
+        </div>
+      </span>
+    </p>
+    <div class="container row mat-elevation-z8 m-5 p-5 m-auto" *ngIf="!loading">
+      <div class="col">
+        <form *ngIf="typeForm" autocomplete="off" [formGroup]="typeForm"
+          (ngSubmit)="saveTypeData(typeId == true ? 1:2)">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Tipo de cliente</mat-label>
+                  <input type="text" matInput formControlName="typename">
+                  <mat-error *ngIf="dataControls['typename'].hasError('required')">
+                    Completa este <strong>campo</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Descripci&oacute;n (Opcional)</mat-label>
+                  <input type="email" matInput formControlName="description">
+
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <mat-progress-bar mode="indeterminate" *ngIf="messageSend"></mat-progress-bar>
+          <button type="submit" class="btn btn-primary pull-left">{{ typeId == true ? 'Actualizar ':'Agregar' }}</button>
+          <div class="clearfix"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

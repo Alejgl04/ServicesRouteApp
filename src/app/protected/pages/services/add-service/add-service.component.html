@@ -1,0 +1,73 @@
+<div class="card card-chart">
+  <div class="card-header card-header-success">
+    <div class="ct-chart" id="dailySalesChart"></div>
+  </div>
+  <div class="card-body">
+    <h4 class="card-title"> {{ serviceId == true ? 'Actualizar Servicio':'Nuevo Servicio' }} </h4>
+    <p class="card-category">
+      <span class="text-success">
+        <div class="text-center" *ngIf="loading">
+          <mat-spinner class="m-auto"></mat-spinner>
+        </div>
+      </span>
+    </p>
+    <div class="container row mat-elevation-z8 m-5 p-5 m-auto" *ngIf="!loading">
+      <div class="col">
+        <form *ngIf="serviceForm"
+              autocomplete="off"
+              [formGroup]="serviceForm"
+              (ngSubmit)="saveService(serviceId == true ? 1:2)">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Nombre del servicio</mat-label>
+                  <input type="text" matInput formControlName="name">
+                  <mat-error *ngIf="dataControls['name'].hasError('required')">
+                    Completa este <strong>campo</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <mat-form-field appearance="fill">
+                  <mat-label>Programable</mat-label>
+                  <mat-select formControlName="programmable">
+                    <mat-option value="">Seleccione una opción</mat-option>
+                    <mat-option [value]=0>Sin programación</mat-option>
+                    <mat-option [value]=14>Quincenal</mat-option>
+                    <mat-option [value]=30>Mensual</mat-option>
+                    <mat-option [value]=90>Trimestral</mat-option>
+                    <mat-option [value]=365>Anual</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="dataControls['programmable'].hasError('required')">
+                    Completa este <strong>campo</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <mat-form-field appearance="fill">
+                  <mat-label>Descripción</mat-label>
+                  <textarea matInput
+                            cdkTextareaAutosize
+                            #autosize="cdkTextareaAutosize"
+                            cdkAutosizeMinRows="5"
+                            cdkAutosizeMaxRows="5"
+                            formControlName="description"></textarea>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <mat-progress-bar mode="indeterminate" *ngIf="messageSend"></mat-progress-bar>
+          <button type="submit" class="btn btn-primary pull-left">{{ serviceId == true ? 'Actualizar Servicio':'Agregar Servicio' }} </button>
+          <div class="clearfix"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

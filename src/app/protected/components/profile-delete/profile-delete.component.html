@@ -1,0 +1,13 @@
+<h2 mat-dialog-title> Usuario: <small>{{data.username}}</small></h2>
+<hr>
+<div mat-dialog-content>
+  <p>
+    Una vez que se elimine su cuenta, todos sus recursos y datos se eliminarán de forma permanente. Antes de eliminar su cuenta, descargue cualquier dato o información que desee conservar.
+  </p>
+  <br>
+   ¿Desea Continuar?
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="borrarPopup()" class="btn btn-danger">Si, borrar</button>
+  <button mat-button (click)="ClosePopup()">Cancelar</button>
+</div>

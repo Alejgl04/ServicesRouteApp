@@ -1,0 +1,75 @@
+<div class="card card-chart">
+  <div class="card-header card-header-success">
+    <div class="ct-chart" id="dailySalesChart"></div>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-3 p-2">
+        <mat-card style="padding: 20px;">
+          <div *ngIf="loading;else contentUser">
+            <mat-spinner class="m-auto"></mat-spinner>
+          </div>
+          <ng-template #contentUser>
+            <mat-card-title>{{ result.user }}</mat-card-title>
+          </ng-template>
+          <mat-card-subtitle>Usuarios Registrados</mat-card-subtitle>
+          <mat-card-actions align="end">
+
+            <a routerLink="/users"> <button mat-button>  Ver m&aacute;s </button>  </a>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+      <div class="col-md-3 p-2">
+        <mat-card style="padding: 20px;">
+          <div *ngIf="loading;else contentCustomer">
+            <mat-spinner class="m-auto"></mat-spinner>
+          </div>
+          <ng-template #contentCustomer>
+            <mat-card-title>{{ result.customer }}</mat-card-title>
+          </ng-template>
+          <mat-card-subtitle>Clientes</mat-card-subtitle>
+          <mat-card-actions align="end">
+
+            <a routerLink="/customers"> <button mat-button>  Ver m&aacute;s </button>  </a>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+      <div class="col-md-3 p-2">
+        <mat-card style="padding: 20px;">
+          <div *ngIf="loading;else contentType">
+            <mat-spinner class="m-auto"></mat-spinner>
+          </div>
+          <ng-template #contentType>
+            <mat-card-title>{{ result.type }}</mat-card-title>
+          </ng-template>
+          <mat-card-subtitle>Tipos de clientes</mat-card-subtitle>
+          <mat-card-actions align="end">
+
+            <a routerLink="/type-customer"> <button mat-button>  Ver m&aacute;s </button>  </a>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+      <div class="col-md-3 p-2">
+        <mat-card style="padding: 20px;">
+          <div *ngIf="loading;else contentService">
+            <mat-spinner class="m-auto"></mat-spinner>
+          </div>
+          <ng-template #contentService>
+            <mat-card-title>{{ result.services }}</mat-card-title>
+          </ng-template>
+          <mat-card-subtitle>Servicios Generados</mat-card-subtitle>
+          <mat-card-actions align="end">
+
+            <a routerLink="/services"> <button mat-button>  Ver m&aacute;s </button>  </a>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer">
+    <!-- <div class="stats">
+      <i class="material-icons">access_time</i> updated 4 minutes ago
+    </div>
+    <button class="btn btn-default" (click)="dale()"> Dale</button> -->
+  </div>
+</div>

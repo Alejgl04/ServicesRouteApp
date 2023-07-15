@@ -1,0 +1,48 @@
+<div class="container-login" style="background-image: url('../../../../assets/img/bg-01.jpg');">
+    <div class="main-panel">
+      <div class="content">
+        <div class="container">
+          <div class="row content-center">
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title">Cambiar Contraseña</h4>
+                  <p class="card-category">Escriba la nueva contraseña </p>
+                </div>
+                <div class="card-body">
+                  <form [formGroup]="changeForm"
+                        (ngSubmit)="submitPassword()"
+                        autocomplete="off">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Contraseña</label>
+                          <input type="password" class="form-control" name="password" formControlName="password">
+                        </div>
+                        <span *ngIf="fieldNotValid('password')" class="text-danger">
+                          Completa este campo
+                        </span>
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Confirmar Contraseña</label>
+                          <input type="password" class="form-control" name="confirmPassword" formControlName="confirmPassword">
+                        </div>
+                        <span *ngIf="fieldNotValid('confirmPassword')" class="text-danger">
+                          Las contraseñas deben coincidir
+                        </span>
+
+                      </div>
+                    </div>
+                    <mat-progress-bar mode="indeterminate" *ngIf="loader"></mat-progress-bar>
+                    <button type="submit" class="btn btn-primary pull-left"  [disabled]="clicked" clicked = true;>Cambiar</button>
+                    <div class="clearfix"></div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="footer">
+      </footer>
+    </div>
+  </div>

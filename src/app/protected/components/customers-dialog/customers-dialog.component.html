@@ -1,0 +1,11 @@
+<h2 mat-dialog-title> Nombre: <small>{{data.name}}</small></h2>
+<hr>
+<div mat-dialog-content>
+    Esta seguro de eliminar a <b>{{data.name}}</b>
+  <br>
+   ¿Desea Continuar?
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="borrarPopup()" class="btn btn-danger">Si, borrar</button>
+  <button mat-button (click)="ClosePopup()">Cancelar</button>
+</div>
