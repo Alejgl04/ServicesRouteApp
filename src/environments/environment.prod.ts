@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://node-services-rqrny.ondigitalocean.app/api',
+  apiUrl: 'https://servicesappnode-production.up.railway.app/api',
 };
