@@ -47,16 +47,17 @@ export class RecoveryComponent implements OnInit {
       this.recoveryForm.markAllAsTouched();
       return;
     }
+
     this.loader = true;
     this.clicked = true;
 
-    this.recoveryService.recoveryPassword( this.recoveryForm.value.email! ).subscribe(
+    this.recoveryService.recoveryPassword( this.recoveryForm.value ).subscribe(
       resp => {
         this.loader = false;
         this.clicked = false;
         if( resp.ok == true ) {
           this.openSnackBar( resp.message );
-          this.recoveryForm.patchValue({'email':''});
+          this.recoveryForm.reset();
         }
         else {
           this.openSnackBar( resp.message );

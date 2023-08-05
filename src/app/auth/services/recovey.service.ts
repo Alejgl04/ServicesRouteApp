@@ -16,7 +16,8 @@ export class RecoveyService {
   ) { }
   private baseUrl: string = environment.apiUrl;
 
-  recoveryPassword( email:string ): Observable<Message> {
+  recoveryPassword( email:string | {} ): Observable<Message> {
+
     const url = `${this.baseUrl}/mails/recovery`;
     return this.http.post<Message>(url, email);
   }
